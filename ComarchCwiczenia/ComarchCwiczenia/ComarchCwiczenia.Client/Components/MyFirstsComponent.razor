@@ -1,0 +1,37 @@
+﻿<div>
+    <h2>This is my first component.</h2>
+    <p>Current Counter value is @CurrentCounterValue</p>
+    <p>Local Counter value is @localCount</p>
+    
+    <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+</div>
+
+@code
+{
+    int localCount { get; set; } = 0;
+
+    [Parameter]
+    public int CurrentCounterValue { get; set; }
+
+    [Parameter]
+    public EventCallback<int> CurrentCounterValueChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnMultipleThree { get; set; }
+
+    private async Task IncrementCount()
+    {
+        CurrentCounterValue++;
+        await CurrentCounterValueChanged.InvokeAsync(CurrentCounterValue);
+
+
+        localCount++;
+
+        if (localCount % 3 == 0)
+        {
+            await OnMultipleThree.InvokeAsync(localCount);
+        }
+
+    }
+}

@@ -1,0 +1,9 @@
+﻿<img @attributes="AdditionalAttributes"
+    src="https://randomuser.me/api/portraits/lego/1.jpg" />
+    
+@code
+{
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> AdditionalAttributes { get; set; }
+
+}

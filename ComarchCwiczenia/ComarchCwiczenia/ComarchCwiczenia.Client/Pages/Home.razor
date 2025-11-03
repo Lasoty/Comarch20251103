@@ -1,0 +1,33 @@
+﻿@page "/"
+@using ComarchCwiczenia.Client.Components.Cascade
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<ImageComponent width="60px" height="100px" />
+
+
+<h1>Toggle the options</h1>
+
+<input type="checkbox" @bind-value="firstOptionValue"/> First option <br />
+
+<input type="checkbox" @bind-value="secondOptionValue"/> First option <br />
+
+<CascadingValue Name="FirstOption" Value="@firstOptionValue">
+    <CascadingValue Name="SecondOption" Value="@secondOptionValue">
+        
+        <FirstLevelComponent />
+
+    </CascadingValue>
+</CascadingValue>
+
+
+
+@code
+{
+    bool firstOptionValue;
+    bool secondOptionValue;
+}

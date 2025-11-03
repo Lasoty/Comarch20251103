@@ -1,0 +1,19 @@
+﻿<h3>ThirstLevelComponent</h3>
+
+<ul>
+    <li>
+        FirstOption = @FirstOpt
+    </li>
+    <li>
+        SecondOption = @SecondOpt
+    </li>
+</ul>
+
+@code
+{
+    [CascadingParameter(Name = "FirstOption")]
+    private bool FirstOpt { get; set; }
+    
+    [CascadingParameter(Name = "SecondOption")]
+    private bool SecondOpt { get; set; }
+}
