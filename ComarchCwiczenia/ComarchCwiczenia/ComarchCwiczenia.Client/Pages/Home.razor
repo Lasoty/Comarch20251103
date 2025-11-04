@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using ComarchCwiczenia.Client.Components.Cascade
+@inject NavigationManager Navigation
 
 <PageTitle>Home</PageTitle>
 
@@ -24,10 +25,53 @@ Welcome to your new app.
     </CascadingValue>
 </CascadingValue>
 
+<button class="btn btn-primary" @onclick="NavigateToRelativeUrl">Relative</button>
+<button class="btn btn-secondary" @onclick="NavigateToAbsoluteUrl">Absolute</button>
+<button class="btn btn-primary" @onclick="NavigateWithForceLoad">Force load</button>
+<button class="btn btn-secondary" @onclick="NavigateWithReplaceHistory">Replace history</button>
+
+<Child>
+    <h4>
+        Message from parent!
+    </h4>
+</Child>
+
+
+<Card>
+    <Header>
+        <h2>Nagłówek karty</h2>
+    </Header>
+    
+    <Body>
+    <p>
+        Jakiś tam tekst
+    </p>
+    </Body>
+</Card>
 
 
 @code
 {
     bool firstOptionValue;
     bool secondOptionValue;
+
+    private void NavigateToRelativeUrl()
+    {
+        Navigation.NavigateTo("/weather");
+    }
+
+    private void NavigateToAbsoluteUrl()
+    {
+        Navigation.NavigateTo("https://google.com");
+    }
+
+    private void NavigateWithForceLoad()
+    {
+        Navigation.NavigateTo("/weather", true);
+    }
+
+    private void NavigateWithReplaceHistory()
+    {
+        Navigation.NavigateTo("/weather", false, true);
+    }
 }

@@ -1,0 +1,47 @@
+﻿@page "/blazor-validations"
+
+<h3>Blazor validations</h3>
+
+<EditForm Model="PersonModel" OnValidSubmit="@AddPerson">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    
+    <div>
+        <InputText class="form-control" 
+                   bind-Value="@PersonModel.Name" 
+                   placeholder="Your name ..." />
+    </div>
+    
+    <div>
+        <InputNumber class="form-control"
+                   bind-Value="@PersonModel.Age"
+                   placeholder="Your age ..." />
+    </div>
+    
+    <div>
+        <InputText class="form-control"
+                   bind-Value="@PersonModel.Email"
+                   placeholder="Your email ..." />
+    </div>
+    
+    <div>
+        <InputText class="form-control"
+                   bind-Value="@PersonModel.ConfirmEmail"
+                   placeholder="Confirm your email ..." />
+    </div>
+    
+    <div>
+        <InputText class="form-control"
+                   bind-Value="@PersonModel.Password"
+                   placeholder="Your password ..." />
+    </div>
+    
+    <div>
+        <InputTextArea class="form-control"
+                       bind-Value="@PersonModel.Address"
+                       placeholder="Your address ..." />
+    </div>
+    
+    <button class="btn btn-primary" type="submit"></button>
+
+</EditForm>

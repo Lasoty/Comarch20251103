@@ -1,8 +1,19 @@
 ﻿@page "/counter"
+@page "/counter-attack/{NameOfProject}/{ProjectId:int?}"
+@page "/catch-all/{*pageRoute}"
+
+
+
+@using System.Collections.Specialized
+@using System.Web
+@inject NavigationManager Navigation
 
 <PageTitle>Counter</PageTitle>
 
 <h1>Counter</h1>
+<h1>Project: @NameOfProject : @ProjectId</h1>
+
+<h3>@PageRoute</h3>
 
 <p role="status">Current count: @currentCount</p>
 <p role="status">Multiple count: @multipleCount</p>
@@ -17,6 +28,15 @@
     private int currentCount = 0;
     private int multipleCount = 0;
 
+    [Parameter]
+    public string? NameOfProject { get; set; }
+
+    [Parameter]
+    public int? ProjectId { get; set; }
+
+    [Parameter]
+    public string? PageRoute { get; set; }
+
     private void IncrementCount()
     {
         currentCount++;
@@ -25,6 +45,14 @@
     private void OnMyFirstComponentMultipleOnThree(int value)
     {
         multipleCount = value;
+    }
+
+    protected override void OnParametersSet()
+    {
+        Uri currentUri = new Uri(Navigation.Uri);
+        NameValueCollection parameters = HttpUtility.ParseQueryString(currentUri.Query);
+        NameOfProject = parameters["param1"];
+        ProjectId = Convert.ToInt32(parameters["param2"]);
     }
 
 }
