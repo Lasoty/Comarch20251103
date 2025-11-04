@@ -8,6 +8,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Bibliotekarz.Shared\Bibliotekarz.Shared.csproj" />
     <ProjectReference Include="..\Bibliotekarz.Client\Bibliotekarz.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.*" />
   </ItemGroup>
