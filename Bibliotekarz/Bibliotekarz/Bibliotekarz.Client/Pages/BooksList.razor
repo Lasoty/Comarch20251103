@@ -1,0 +1,23 @@
+﻿@page "/books-list"
+@rendermode InteractiveWebAssembly
+
+<h3>BooksList</h3>
+
+<MudTable Items="@Books" 
+          Hover="true" 
+          Breakpoint="Breakpoint.Sm" 
+          Loading="@_loading" 
+          LoadingProgressColor="Color.Info">
+    <HeaderContent>
+        <MudTh>Autor</MudTh>
+        <MudTh>Tytuł</MudTh>
+        <MudTh>Liczba stron</MudTh>
+        <MudTh>Czy wypożyczona</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Autor">@context.Author</MudTd>
+        <MudTd DataLabel="Tytuł">@context.Title</MudTd>
+        <MudTd DataLabel="Liczba stron">@context.PageCount</MudTd>
+        <MudTd DataLabel="Czy wypożyczona">@(context.IsBorrowed ? "Tak" : "Nie")</MudTd>
+    </RowTemplate>
+</MudTable>

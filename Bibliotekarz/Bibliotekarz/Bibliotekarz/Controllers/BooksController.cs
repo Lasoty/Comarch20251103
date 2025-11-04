@@ -1,4 +1,5 @@
 ﻿using Bibliotekarz.Shared.DTOs;
+using Bibliotekarz.Shared.ResultWrapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bibliotekarz.Controllers;
@@ -11,7 +12,7 @@ public class BooksController : ControllerBase
     public async Task<IActionResult> GetAll()
     {
         List<BookDto> result = GetFakeBooks();
-        return Ok(result);
+        return Ok(Result<List<BookDto>>.Success(result));
     }
 
     private List<BookDto> GetFakeBooks()
