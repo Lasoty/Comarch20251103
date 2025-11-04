@@ -5,43 +5,50 @@
 <EditForm Model="PersonModel" OnValidSubmit="@AddPerson">
     <DataAnnotationsValidator />
     <ValidationSummary />
-    
+
     <div>
-        <InputText class="form-control" 
-                   bind-Value="@PersonModel.Name" 
+        <InputText class="form-control"
+                   @bind-Value="@PersonModel.Name"
                    placeholder="Your name ..." />
+        <ValidationMessage For="@(() => PersonModel.Name)" />
     </div>
-    
+
     <div>
-        <InputNumber class="form-control"
-                   bind-Value="@PersonModel.Age"
-                   placeholder="Your age ..." />
+        <InputNumber TValue="int"
+                     class="form-control"
+                     @bind-Value="@PersonModel.Age"
+                     placeholder="Your age ..." />
+        <ValidationMessage For="@(() => PersonModel.Age)" />
     </div>
-    
+
     <div>
         <InputText class="form-control"
-                   bind-Value="@PersonModel.Email"
+                   @bind-Value="@PersonModel.Email"
                    placeholder="Your email ..." />
+        <ValidationMessage For="@(() => PersonModel.Email)" />
     </div>
-    
+
     <div>
         <InputText class="form-control"
-                   bind-Value="@PersonModel.ConfirmEmail"
+                   @bind-Value="@PersonModel.ConfirmEmail"
                    placeholder="Confirm your email ..." />
+        <ValidationMessage For="@(() => PersonModel.ConfirmEmail)" />
     </div>
-    
+
     <div>
         <InputText class="form-control"
-                   bind-Value="@PersonModel.Password"
+                   @bind-Value="@PersonModel.Password"
                    placeholder="Your password ..." />
+        <ValidationMessage For="@(() => PersonModel.Password)" />
     </div>
-    
+
     <div>
         <InputTextArea class="form-control"
-                       bind-Value="@PersonModel.Address"
+                       @bind-Value="@PersonModel.Address"
                        placeholder="Your address ..." />
+        <ValidationMessage For="@(() => PersonModel.Address)" />
     </div>
-    
-    <button class="btn btn-primary" type="submit"></button>
+
+    <button class="btn btn-primary" type="submit">Save</button>
 
 </EditForm>
