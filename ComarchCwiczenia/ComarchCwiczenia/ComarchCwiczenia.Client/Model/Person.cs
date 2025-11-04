@@ -19,7 +19,6 @@ public class Person
     [Compare(nameof(Email), ErrorMessage = "Confirm email must match!")]
     public string ConfirmEmail { get; set; }
 
-    [Required]
     [PasswordValidation(3, 50, true, true, true, true)]
     public string Password { get; set; }
 
