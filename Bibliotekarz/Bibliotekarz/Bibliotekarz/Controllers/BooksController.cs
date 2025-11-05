@@ -1,5 +1,6 @@
 ﻿using Bibliotekarz.Shared.DTOs;
 using Bibliotekarz.Shared.ResultWrapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bibliotekarz.Controllers;
@@ -9,6 +10,7 @@ namespace Bibliotekarz.Controllers;
 public class BooksController : ControllerBase
 {
     [HttpGet]
+    [Authorize(Roles = "BookViewer,BookEditor")]
     public async Task<IActionResult> GetAll()
     {
         List<BookDto> result = GetFakeBooks();

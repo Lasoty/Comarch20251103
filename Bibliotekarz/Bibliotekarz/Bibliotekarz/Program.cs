@@ -4,7 +4,7 @@ using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddAppDbContext();
+builder.AddAppDbContext().AddJwtAuthentication();
 
 // Add MudBlazor services
 builder.Services.AddMudServices();
@@ -29,12 +29,14 @@ else
 }
 
 app.UseHttpsRedirection();
-
-
 app.UseAntiforgery();
 
+app.MapStaticAssets().AllowAnonymous();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapControllers();
-app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(Bibliotekarz.Client._Imports).Assembly);
