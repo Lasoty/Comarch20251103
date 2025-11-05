@@ -10,10 +10,10 @@ public class BookDto
 
     public bool IsBorrowed { get; set; }
 
-    public Customer Borrower { get; set; }
+    public CustomerDto Borrower { get; set; }
 }
 
-public class Customer
+public class CustomerDto
 {
     public string FirstName { get; set; }
 

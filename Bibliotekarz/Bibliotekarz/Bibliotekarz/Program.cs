@@ -1,8 +1,10 @@
-using Bibliotekarz.Client.Pages;
 using Bibliotekarz.Components;
+using Bibliotekarz.Extensions;
 using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddAppDbContext();
 
 // Add MudBlazor services
 builder.Services.AddMudServices();
