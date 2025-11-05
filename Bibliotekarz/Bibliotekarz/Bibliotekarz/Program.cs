@@ -39,4 +39,5 @@ app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(Bibliotekarz.Client._Imports).Assembly);
 
+await app.SeedDatabaseAsync();
 app.Run();
