@@ -1,9 +1,18 @@
-﻿
+﻿@using Microsoft.AspNetCore.Components.Authorization
+
 <MudNavMenu>
-    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
-    <MudNavLink Href="counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
-    
-    <MudNavLink Href="weather" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Weather</MudNavLink>
+    <MudNavLink Href="" Match="NavLinkMatch.All"
+                Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
+
+    <AuthorizeView Roles="BookViewer,BookEditor">
+        <MudNavLink Href="books-list" Match="NavLinkMatch.Prefix"
+                    Icon="@Icons.Material.Filled.List">List książek</MudNavLink>
+    </AuthorizeView>
+
+    <AuthorizeView Roles="BookEditor">
+        <MudNavLink Href="/books/edit/1" Match="NavLinkMatch.Prefix"
+                    Icon="@Icons.Material.Filled.Edit">Edycja</MudNavLink>
+    </AuthorizeView>
 
 </MudNavMenu>
 

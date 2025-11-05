@@ -1,5 +1,7 @@
 ﻿@page "/books-list"
+@using Microsoft.AspNetCore.Authorization
 @rendermode InteractiveWebAssembly
+@attribute [Authorize(Roles = "BookViewer,BookEditor")]
 
 <h3>BooksList</h3>
 

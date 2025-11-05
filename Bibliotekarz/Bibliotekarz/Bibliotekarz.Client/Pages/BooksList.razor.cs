@@ -2,6 +2,7 @@
 using Bibliotekarz.Client.ClientServices;
 using Bibliotekarz.Shared.DTOs;
 using Bibliotekarz.Shared.ResultWrapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
