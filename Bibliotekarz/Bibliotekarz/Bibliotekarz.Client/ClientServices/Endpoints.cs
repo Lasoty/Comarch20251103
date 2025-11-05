@@ -6,4 +6,10 @@ public static class Endpoints
     {
         public static string GetAll = "api/Books";
     }
+
+    public static class Auth
+    {
+        public static string Register = "api/auth/register";
+        public static string Login = "api/auth/login";
+    }
 }

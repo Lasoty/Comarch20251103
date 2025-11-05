@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
+using Bibliotekarz.Client.Authentication;
 using Bibliotekarz.Client.ClientServices;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 namespace Bibliotekarz.Client.Extensions;
@@ -12,8 +14,7 @@ public static class WebAssemblyHostBuilderExtensions
 
         return builder;
     }
-
-
+    
     public static WebAssemblyHostBuilder AddApiClients(this WebAssemblyHostBuilder builder)
     {
         var clientInterface = typeof(IApiClient);
@@ -56,5 +57,15 @@ public static class WebAssemblyHostBuilderExtensions
         }
 
         return services;
+    }
+
+    public static WebAssemblyHostBuilder AddJwtAuthentication(this WebAssemblyHostBuilder builder)
+    {
+        builder.Services.AddScoped<JwtAuthenticationStateProvider>();
+        builder.Services.AddScoped<AuthenticationStateProvider>(sp =>
+            sp.GetRequiredService<JwtAuthenticationStateProvider>());
+
+        builder.Services.AddAuthorizationCore();
+        return builder;
     }
 }

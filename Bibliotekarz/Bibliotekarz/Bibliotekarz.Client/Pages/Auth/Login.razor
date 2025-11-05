@@ -1,0 +1,16 @@
+﻿@page "/login"
+
+<MudPaper Class="pa-4 mx-auto mt-6">
+    <MudText Typo="Typo.h5">Logowanie</MudText>
+
+    <MudTextField Label="Użytkownik" @bind-Value="_model.UserName" />
+    <MudTextField Label="Hasło" @bind-Value="_model.Password"
+                  InputType="InputType.Password" />
+
+    <MudButton Color="Color.Primary"
+               Variant="Variant.Filled"
+               OnClick="OnLoginClicked"
+               Class="mt-4">Zaloguj</MudButton>
+
+    <MudText Color="Color.Error">@_error</MudText>
+</MudPaper>

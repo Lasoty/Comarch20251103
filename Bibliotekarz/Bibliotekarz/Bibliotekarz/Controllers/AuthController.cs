@@ -35,6 +35,7 @@ public class AuthController(
         return Ok();
     }
 
+    [HttpPost("login")]
     public async Task<IActionResult> Login(LoginDto request)
     {
         //Uwierzytelnianie użytkownika
@@ -67,11 +68,11 @@ public class AuthController(
             signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
             );
 
-        return Ok(new
+        return Ok(new LoginResponse
         {
-            token = new JwtSecurityTokenHandler().WriteToken(token),
-            expiration = token.ValidTo,
-            roles = userRoles
+            Token = new JwtSecurityTokenHandler().WriteToken(token),
+            Expiration = token.ValidTo,
+            Roles = userRoles
         });
     }
 }
